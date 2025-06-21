@@ -1,17 +1,19 @@
 package com.javakaian.game.resources;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 public class MyAtlas {
 
     public static Sprite MENU_TILE;
-    public static Sprite PATH_TILE;
-    public static Sprite LAND_TILE;
+    public static TextureRegion LAND_TILE;
+    public static TextureRegion PATH_TILE;
 
     public static Sprite ENEMY;
     public static Sprite ENEMY_SLOWED;
@@ -53,13 +55,13 @@ public class MyAtlas {
         coinRegions = atlas.findRegions("coin");
 
         MENU_TILE = createSprite(atlas.findRegion("menu"));
-        LAND_TILE = createSprite(atlas.findRegion("land"));
-        PATH_TILE = createSprite(atlas.findRegion("path"));
+        LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("tileField.png")));
+        PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tilePath.png")));
         ENEMY = createSprite(atlas.findRegion("enemy"));
         ENEMY_SLOWED = createSprite(atlas.findRegion("enemy_slowed"));
-        FIRE_TOWER = createSprite(atlas.findRegion("fire_plane"));
-        ELECTRIC_TOWER = createSprite(atlas.findRegion("electric_tower"));
-        ICE_TOWER = createSprite(atlas.findRegion("ice_tower"));
+        FIRE_TOWER = new Sprite(new Texture(Gdx.files.internal("fireTower.png")));
+        ELECTRIC_TOWER = new Sprite(new Texture(Gdx.files.internal("electricTower.png")));
+        ICE_TOWER = new Sprite(new Texture(Gdx.files.internal("iceTower.png")));
         FIRE_BULLET = createSprite(atlas.findRegion("bullet_fire"));
         ICE_BULLET = createSprite(atlas.findRegion("ice_bullet"));
 
