@@ -26,7 +26,7 @@ public class InformationMenu {
         this.layout = new SimpleLayout(
                 0,
                 0,
-                GameConstants.SCREEN_WIDTH,
+                GameConstants.VIRTUAL_WIDTH,
                 GameConstants.GRID_HEIGHT,
                 45,15);
         lblDamage = new OLabel("DAMAGE: ");

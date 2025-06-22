@@ -26,15 +26,15 @@ public class GameUtils {
     public static void renderCenter(String text, SpriteBatch sb, BitmapFont font) {
 
         final GlyphLayout gl = new GlyphLayout(font, text);
-        font.draw(sb, text, GameConstants.SCREEN_WIDTH / 2 - gl.width / 2,
-                GameConstants.SCREEN_HEIGHT * 0.3f - gl.height / 2);
+        font.draw(sb, text, GameConstants.VIRTUAL_WIDTH  / 2 - gl.width / 2,
+                GameConstants.VIRTUAL_HEIGHT * 0.3f - gl.height / 2);
 
     }
 
     public static void renderCenterWithY(String text, SpriteBatch sb, BitmapFont font, float y) {
 
         final GlyphLayout gl = new GlyphLayout(font, text);
-        font.draw(sb, text, GameConstants.SCREEN_WIDTH / 2 - gl.width / 2, y - gl.height / 2);
+        font.draw(sb, text, GameConstants.VIRTUAL_WIDTH  / 2 - gl.width / 2, y - gl.height / 2);
 
     }
 

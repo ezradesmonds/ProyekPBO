@@ -10,11 +10,9 @@ public class TowerDefenseMain {
 
         OTDGame game = new OTDGame();
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.width = (int) (GameConstants.SCREEN_WIDTH
-                * GameConstants.GAME_SCALE);
-        config.height = (int) (GameConstants.SCREEN_HEIGHT
-                * GameConstants.GAME_SCALE);
-        config.resizable = false;
+        config.width = (int) GameConstants.VIRTUAL_WIDTH;
+        config.height = (int) GameConstants.VIRTUAL_HEIGHT;
+        config.resizable = true;
         new LwjglApplication(game, config);
     }
 }

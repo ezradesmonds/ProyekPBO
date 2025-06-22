@@ -124,7 +124,7 @@ public class EnemyController {
 
         List<Enemy> shouldRemoved = new ArrayList<>();
         for (Enemy e : enemyList) {
-            if (e.position.x + e.size.x > GameConstants.SCREEN_WIDTH) {
+            if (e.position.x + e.size.x > GameConstants.VIRTUAL_WIDTH) {
                 shouldRemoved.add(e);
                 level.enemyPassedTheCheckPoint();
             }

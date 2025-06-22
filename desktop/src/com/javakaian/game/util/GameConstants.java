@@ -11,11 +11,11 @@ public class GameConstants {
     public static int ROW_SIZE = 9;
     public static int MAP_ROW_SIZE = 6;
     public static int COLUMN_SIZE = 16;
-    public static float SCREEN_HEIGHT = 720;
-    public static float SCREEN_WIDTH = (16 * SCREEN_HEIGHT) / 9;
+	public static final float VIRTUAL_HEIGHT = 720;
+	public static final float VIRTUAL_WIDTH = (16 * VIRTUAL_HEIGHT) / 9; // Hasilnya 1280
 
-	public static float GRID_WIDTH = SCREEN_WIDTH / COLUMN_SIZE;
-	public static float GRID_HEIGHT = SCREEN_HEIGHT / ROW_SIZE;
+	public static float GRID_WIDTH = VIRTUAL_WIDTH / COLUMN_SIZE;
+	public static float GRID_HEIGHT = VIRTUAL_HEIGHT / ROW_SIZE;
 
 	public static float ENEMY_WIDTH = GRID_WIDTH / 2f;
 	public static float ENEMY_HEIGHT = GRID_HEIGHT / 2f;

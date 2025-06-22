@@ -20,7 +20,7 @@ public class MainControlMenu {
         this.layoutContainer = new SimpleLayout(
                 0,
                 GameConstants.GRID_HEIGHT * 7,
-                GameConstants.SCREEN_WIDTH,
+                GameConstants.VIRTUAL_WIDTH,
                 GameConstants.GRID_HEIGHT * 2,
                 10);
 

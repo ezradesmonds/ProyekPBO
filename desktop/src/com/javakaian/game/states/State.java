@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.javakaian.game.util.GameConstants;
 import com.javakaian.game.util.GameUtils;
 
@@ -15,13 +17,15 @@ public abstract class State {
     protected BitmapFont bitmapFont;
     protected GlyphLayout glyphLayout;
     protected OrthographicCamera camera;
+    protected Viewport viewport;
 
     public State(StateController stateController) {
         this.stateController = stateController;
         bitmapFont = GameUtils.generateBitmapFont(100, Color.WHITE);
         glyphLayout = new GlyphLayout();
         camera = new OrthographicCamera();
-        camera.setToOrtho(true, GameConstants.SCREEN_WIDTH, GameConstants.SCREEN_HEIGHT);
+        viewport = new FitViewport(GameConstants.VIRTUAL_WIDTH, GameConstants.VIRTUAL_HEIGHT, camera);
+        camera.setToOrtho(true, GameConstants.VIRTUAL_WIDTH, GameConstants.VIRTUAL_HEIGHT);
     }
     public StateController getStateController() {
         return stateController;
@@ -35,9 +39,15 @@ public abstract class State {
      * */
     public void render(SpriteBatch sb,ShapeRenderer sr){
         camera.update();
+        viewport.apply();
         sb.setProjectionMatrix(camera.combined);
         sr.setProjectionMatrix(camera.combined);
     }
+
+    public void resize(int width, int height) {
+        viewport.update(width, height, true); // true untuk menengahkan kamera
+    }
+
     public abstract void update(float deltaTime);
 
     public abstract void updateInputs(float x, float y);

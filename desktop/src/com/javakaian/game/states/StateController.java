@@ -62,6 +62,12 @@ public class StateController extends InputAdapter {
         return new Vector2(r.x,r.y);
     }
 
+    public void resize(int width, int height) {
+        if (currentState != null) {
+            currentState.resize(width, height);
+        }
+    }
+
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         final Vector2 result = unproject(screenX,screenY);
