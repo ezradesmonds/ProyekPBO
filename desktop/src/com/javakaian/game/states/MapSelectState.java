@@ -12,6 +12,7 @@ import com.javakaian.game.ui.buttons.OButtonListener;
 import com.javakaian.game.ui.components.SimpleLayout;
 import com.javakaian.game.util.GameConstants;
 import com.javakaian.game.util.GameUtils;
+import static com.javakaian.game.resources.MyAtlas.backgroundSprite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +102,15 @@ public class MapSelectState extends State {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         sb.begin();
-        GameUtils.renderCenter(stateName, sb, bitmapFont);
+        backgroundSprite.setSize(GameConstants.VIRTUAL_WIDTH, GameConstants.VIRTUAL_HEIGHT);
+        backgroundSprite.setPosition(0, 0);
+        backgroundSprite.draw(sb);
+
+        // Gambar judul dan tombol-tombol di atasnya
+        final float titleX = (GameConstants.VIRTUAL_WIDTH - glyphLayout.width) / 2;
+        final float titleY = GameConstants.VIRTUAL_HEIGHT * 0.35f;
+        bitmapFont.draw(sb, stateName, titleX, titleY);
+
         layout.render(sb);
         sb.end();
     }

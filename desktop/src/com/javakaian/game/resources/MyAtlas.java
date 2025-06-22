@@ -15,7 +15,7 @@ public class MyAtlas {
     public enum Theme {
         GREEN, BROWN
     }
-
+    public static Sprite backgroundSprite;
     public static Sprite MENU_TILE;
     public static TextureRegion LAND_TILE;
     public static TextureRegion PATH_TILE;
@@ -107,6 +107,10 @@ public class MyAtlas {
         MUSIC_ON = createSprite(atlas.findRegion("music_on"));
         MUSIC_OFF = createSprite(atlas.findRegion("music_off"));
         GENERIC_BUTTON = createSprite(atlas.findRegion("empty_button"));
+
+        Texture bgTexture = new Texture(Gdx.files.internal("Tankdefense.png"));
+        backgroundSprite = new Sprite(bgTexture);
+        backgroundSprite.flip(false, true);
     }
 
     public static Sprite createSprite(AtlasRegion region) {
@@ -117,6 +121,9 @@ public class MyAtlas {
 
     public static void dispose() {
         atlas.dispose();
+        if (backgroundSprite != null && backgroundSprite.getTexture() != null) {
+            backgroundSprite.getTexture().dispose();
+        }
     }
 
 }

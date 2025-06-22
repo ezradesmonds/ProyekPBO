@@ -17,13 +17,13 @@ import com.javakaian.game.ui.buttons.OButtonListener;
 import com.javakaian.game.ui.components.SimpleLayout;
 import com.javakaian.game.util.GameConstants;
 import com.javakaian.game.util.GameUtils;
-
+import static com.javakaian.game.resources.MyAtlas.backgroundSprite;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MenuState extends State {
 
-    private final String stateName = "MAIN MENU";
+    private final String stateName = "Tank Defense";
 
     private OButton btnPlay;
     private OButton btnOptions;
@@ -62,10 +62,13 @@ public class MenuState extends State {
     public void render(SpriteBatch sb, ShapeRenderer sr) {
         super.render(sb, sr);
 
-        Gdx.gl.glClearColor(RED, GREEN, BLUE, ALPHA);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         sb.begin();
+        backgroundSprite.setSize(GameConstants.VIRTUAL_WIDTH, GameConstants.VIRTUAL_HEIGHT);
+        backgroundSprite.setPosition(0, 0);
+        backgroundSprite.draw(sb);
         GameUtils.renderCenter(stateName, sb, bitmapFont);
         layout.render(sb);
         sb.end();
