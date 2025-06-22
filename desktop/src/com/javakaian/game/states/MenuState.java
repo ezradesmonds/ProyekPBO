@@ -27,19 +27,29 @@ public class MenuState extends State {
 
     private OButton btnPlay;
     private OButton btnOptions;
-    private OButton btnCredits;
+//    private OButton btnCredits;
     private final List<OButton> buttons;
     private final SimpleLayout layout;
 
     public MenuState(StateController stateController) {
         super(stateController);
         glyphLayout.setText(bitmapFont, stateName);
+
+        final float buttonWidth = GameConstants.GRID_WIDTH * 1.5f;
+        final float spacing = 110f; // Jarak antar tombol
+        final int buttonCount = 2;
+
+        // Lebar total = (2 * lebar tombol) + (1 * jarak)
+        final float totalWidth = (buttonCount * buttonWidth) + spacing;
+        // Posisi X = (Lebar Layar - Lebar Total) / 2
+        final float startX = (GameConstants.VIRTUAL_WIDTH - totalWidth) / 2;
+
         layout = new SimpleLayout(
-                GameConstants.GRID_WIDTH * 3,
-                GameConstants.GRID_HEIGHT * 4,
-                GameConstants.GRID_WIDTH * 10,
+                startX, // Posisi X baru yang sudah dihitung
+                GameConstants.GRID_HEIGHT * 4, // Posisi Y tetap di tengah
+                totalWidth, // Lebar layout baru
                 GameConstants.GRID_HEIGHT * 3,
-                110,
+                (int)spacing,
                 50
         );
 
@@ -70,11 +80,11 @@ public class MenuState extends State {
                 GameConstants.GRID_HEIGHT * 1.5f);
         btnPlay = bf.createOButton(MyAtlas.MENU_PLAY);
         btnOptions = bf.createOButton("OPTIONS", MyAtlas.GENERIC_BUTTON, true);
-        btnCredits = bf.createOButton("CREDITS", MyAtlas.GENERIC_BUTTON, true);
+//        btnCredits = bf.createOButton("CREDITS", MyAtlas.GENERIC_BUTTON, true);
 
         buttons.add(btnPlay);
         buttons.add(btnOptions);
-        buttons.add(btnCredits);
+//        buttons.add(btnCredits);
 
         layout.addComponents(buttons);
         layout.pack();
@@ -94,11 +104,11 @@ public class MenuState extends State {
             }
         });
 
-        btnCredits.setButtonListener((event, x, y) -> {
-            if (event == OButtonListener.TouchEvent.RELEASE) {
-                getStateController().setState(StateEnum.CreditsState);
-            }
-        });
+//        btnCredits.setButtonListener((event, x, y) -> {
+//            if (event == OButtonListener.TouchEvent.RELEASE) {
+//                getStateController().setState(StateEnum.CreditsState);
+//            }
+//        });
 
     }
 

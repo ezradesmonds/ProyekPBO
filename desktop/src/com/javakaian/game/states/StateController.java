@@ -103,8 +103,8 @@ public class StateController extends InputAdapter {
                 return new MenuState(this);
             case OptionState:
                 return new OptionsState(this);
-            case CreditsState:
-                return new CreditState(this);
+//            case CreditsState:
+//                return new CreditState(this);
             case PauseState:
                 return new PauseState(this);
             default:
