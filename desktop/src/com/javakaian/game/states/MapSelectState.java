@@ -31,7 +31,7 @@ public class MapSelectState extends State {
         glyphLayout.setText(bitmapFont, stateName);
 
         buttons = new ArrayList<>();
-        layout = new SimpleLayout(0, 0, GameConstants.VIRTUAL_WIDTH, GameConstants.GRID_HEIGHT * 4, 50, 80);
+        layout = new SimpleLayout(190, 300, GameConstants.VIRTUAL_WIDTH, GameConstants.GRID_HEIGHT * 3, 50, 80);
         initButtons();
         setListeners();
 
@@ -44,10 +44,10 @@ public class MapSelectState extends State {
 
     private void initButtons() {
         // Buat tombol dengan lebar yang lebih besar untuk teks
-        final ButtonFactory bf = new ButtonFactory(GameConstants.GRID_WIDTH * 4f, GameConstants.GRID_HEIGHT * 1.5f);
-        btnGreenTheme = bf.createOButton("Green Field", MyAtlas.GENERIC_BUTTON, true);
-        btnBrownTheme = bf.createOButton("Brown Desert", MyAtlas.GENERIC_BUTTON, true);
-        btnBack = bf.createOButton("Back", MyAtlas.GENERIC_BUTTON, true);
+        final ButtonFactory bf = new ButtonFactory(GameConstants.GRID_WIDTH * 3f, GameConstants.GRID_HEIGHT * 1.5f);
+        btnGreenTheme = bf.createOButton("GREEN FIELD", MyAtlas.GENERIC_BUTTON, true);
+        btnBrownTheme = bf.createOButton("BROWN DESERT", MyAtlas.GENERIC_BUTTON, true);
+        btnBack = bf.createOButton("BACK", MyAtlas.GENERIC_BUTTON, true);
 
         buttons.add(btnGreenTheme);
         buttons.add(btnBrownTheme);
@@ -55,6 +55,12 @@ public class MapSelectState extends State {
 
         layout.addComponents(buttons);
         layout.pack();
+//
+//        // Sesuaikan posisi layout setelah tombol di-pack
+//        layout.setPosition(
+//                (GameConstants.VIRTUAL_WIDTH - layout.getSize().x) / 2,
+//                GameConstants.VIRTUAL_HEIGHT / 2 - layout.getSize().y / 2
+//        );
     }
 
     private void setListeners() {
