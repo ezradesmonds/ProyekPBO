@@ -8,9 +8,13 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
-import java.util.Random;
+//import java.util.Random;
 
 public class MyAtlas {
+
+    public enum Theme {
+        GREEN, BROWN
+    }
 
     public static Sprite MENU_TILE;
     public static TextureRegion LAND_TILE;
@@ -48,18 +52,23 @@ public class MyAtlas {
 
     public static Array<AtlasRegion> coinRegions;
     private static TextureAtlas atlas;
-    public static void loadMapTheme() {
-        Random random = new Random();
-        if (random.nextBoolean()) {
-            // Tema 1: Peta Hijau (seperti yang sudah ada)
-            LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("tileField.png")));
-            PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tilePath.png")));
-        } else {
-            // Tema 2: Peta Coklat
-            LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("FieldsTile_Brown.png")));
-            PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tilePath.png")));
+    public static void loadMapTheme(Theme theme) {
+        // Hapus tekstur lama jika sudah ada untuk menghindari memory leak
+        if (LAND_TILE != null && LAND_TILE.getTexture() != null) LAND_TILE.getTexture().dispose();
+        if (PATH_TILE != null && PATH_TILE.getTexture() != null) PATH_TILE.getTexture().dispose();
+
+        switch (theme) {
+            case GREEN:
+                LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("tileField.png")));
+                PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tilePath.png")));
+                break;
+            case BROWN:
+                LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("FieldsTile_Brown.png")));
+                PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tilePath.png")));
+                break;
         }
     }
+
     public static void init() {
         atlas = new TextureAtlas(Gdx.files.internal("pack.atlas"));
         atlas.getTextures().

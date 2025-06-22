@@ -59,7 +59,7 @@ public abstract class State {
     public abstract void scrolled(int amount);
 
     public enum StateEnum {
-        PlayState, PauseState, MenuState, GameOverState, /* CreditsState,*/ OptionState
+        PlayState, PauseState, MenuState, GameOverState, /* CreditsState,*/ OptionState, MapSelectState
     }
 
 }

@@ -107,6 +107,8 @@ public class StateController extends InputAdapter {
 //                return new CreditState(this);
             case PauseState:
                 return new PauseState(this);
+            case MapSelectState:
+                return new MapSelectState(this);
             default:
                 throw new IllegalArgumentException("Invalid state enum: " + stateEnum);
         }

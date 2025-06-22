@@ -93,9 +93,10 @@ public class MenuState extends State {
     private void setListeners() {
         btnPlay.setButtonListener((event, x, y) -> {
             if (event == OButtonListener.TouchEvent.RELEASE) {
-                getStateController().setState(StateEnum.PlayState);
-                MusicHandler.playBackgroundMusic();
-                MusicHandler.stopMenuMusic();
+                getStateController().setState(StateEnum.MapSelectState);
+//                getStateController().setState(StateEnum.PlayState);
+//                MusicHandler.playBackgroundMusic();
+//                MusicHandler.stopMenuMusic();
             }
         });
         btnOptions.setButtonListener((event, x, y) -> {
