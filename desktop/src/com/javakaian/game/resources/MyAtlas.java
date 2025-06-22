@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import java.util.Random;
 
 public class MyAtlas {
 
@@ -47,7 +48,18 @@ public class MyAtlas {
 
     public static Array<AtlasRegion> coinRegions;
     private static TextureAtlas atlas;
-
+    public static void loadMapTheme() {
+        Random random = new Random();
+        if (random.nextBoolean()) {
+            // Tema 1: Peta Hijau (seperti yang sudah ada)
+            LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("tileField.png")));
+            PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tilePath.png")));
+        } else {
+            // Tema 2: Peta Coklat
+            LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("FieldsTile_Brown.png")));
+            PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tilePath.png")));
+        }
+    }
     public static void init() {
         atlas = new TextureAtlas(Gdx.files.internal("pack.atlas"));
         atlas.getTextures().
@@ -55,8 +67,8 @@ public class MyAtlas {
         coinRegions = atlas.findRegions("coin");
 
         MENU_TILE = createSprite(atlas.findRegion("menu"));
-        LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("tileField.png")));
-        PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tilePath.png")));
+//        LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("FieldsTile_Brown.png")));
+//        PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tileField.png")));
         ENEMY = createSprite(atlas.findRegion("enemy"));
         ENEMY_SLOWED = createSprite(atlas.findRegion("enemy_slowed"));
         FIRE_TOWER = new Sprite(new Texture(Gdx.files.internal("fireTower.png")));

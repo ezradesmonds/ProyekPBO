@@ -47,6 +47,7 @@ public class Level {
     }
 
     private void init() {
+        MyAtlas.loadMapTheme();
         waveNumber = 1;
         score = 0;
         money = GameConstants.INITIAL_MONEY;
