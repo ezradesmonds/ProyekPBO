@@ -27,6 +27,9 @@ public class StateController extends InputAdapter {
     public void setState(StateEnum stateEnum) {
         previousState = currentState;
         currentState = getState(stateEnum);
+        if (currentState != null) {
+            currentState.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        }
     }
 
     /**
@@ -36,6 +39,9 @@ public class StateController extends InputAdapter {
         State tmp = previousState;
         previousState = currentState;
         currentState = tmp;
+        if (currentState != null) {
+            currentState.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        }
     }
 
     /**

@@ -38,8 +38,8 @@ public abstract class State {
      * using `super.render(sb,sr)`
      * */
     public void render(SpriteBatch sb,ShapeRenderer sr){
-        camera.update();
-        viewport.apply();
+//        camera.update();
+        viewport.apply(true);
         sb.setProjectionMatrix(camera.combined);
         sr.setProjectionMatrix(camera.combined);
     }
