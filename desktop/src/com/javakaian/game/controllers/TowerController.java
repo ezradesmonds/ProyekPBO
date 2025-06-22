@@ -22,6 +22,15 @@ public class TowerController {
 
     private boolean speedMode = false;
 
+    public void removeTower(BaseTower tower) {
+        if (tower != null) {
+            towerList.remove(tower);
+            if (selectedTower == tower) {
+                clearSelectedTower();
+            }
+        }
+    }
+
     public TowerController() {
 
         towerList = new ArrayList<>();
@@ -46,10 +55,6 @@ public class TowerController {
         }
     }
 
-    /**
-     * This fuction builds a tower and returns the cost value according to the tower
-     * type. if building tower is not possible then it returns zero as a cost value.
-     **/
     public int buildTower(float x, float y, List<Enemy> enemyList, TowerType type, int money) {
         int cost;
         switch (type) {
@@ -105,9 +110,6 @@ public class TowerController {
         return GameConstants.ELECTRIC_TOWER_PRICE;
     }
 
-    /**
-     * Returns the selected tower.
-     */
     public BaseTower getSelectedTower(Vector2 center) {
 
         for (BaseTower tower : towerList) {
@@ -144,7 +146,6 @@ public class TowerController {
     }
 
     public void speed2xClicked() {
-        // also consider towers which will be builded during the process.
         speedMode = true;
         for (BaseTower baseTower : towerList) {
             baseTower.setSpeed(baseTower.getSpeed() * 2);

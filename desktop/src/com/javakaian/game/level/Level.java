@@ -61,6 +61,23 @@ public class Level {
         towerSelectionMenu = new MainControlMenu(this);
     }
 
+    public void sellSelectedTower() {
+        BaseTower towerToSell = towerController.getSelectedTower();
+        if (towerToSell != null) {
+            Grid grid = map.getSelectedGrid(towerToSell.center.x, towerToSell.center.y);
+            if (grid != null && grid.getType() == EnumGridType.TOWER) {
+                int sellValue = towerToSell.getTotalCost();
+                increaseMoney(sellValue);
+
+                towerController.removeTower(towerToSell);
+                grid.setType(EnumGridType.LAND);
+
+                informationMenu.clearInformations();
+                towerSelectionMenu.clearSelectedTower();
+            }
+        }
+    }
+
     public void render(ShapeRenderer sr) {
         map.render(sr);
         enemyController.render(sr);
@@ -162,15 +179,18 @@ public class Level {
                 BaseTower t = towerController.getSelectedTower(grid.getPosition());
                 informationMenu.updateTowerInformation(t);
                 towerSelectionMenu.updateUpgradeButtons(money);
+                towerSelectionMenu.onTowerSelectionChanged(true);
                 break;
             case LAND:
                 towerController.clearSelectedTower();
                 informationMenu.clearInformations();
                 towerSelectionMenu.clearSelectedTower();
+                towerSelectionMenu.onTowerSelectionChanged(false);
                 break;
             case PATH:
                 towerController.clearSelectedTower();
                 towerSelectionMenu.clearSelectedTower();
+                towerSelectionMenu.onTowerSelectionChanged(false);
                 break;
 
             default:
@@ -258,10 +278,6 @@ public class Level {
     public void normalSpeedClicked() {
         towerController.normalSpeedClicked();
         enemyController.normalSpeedClicked();
-    }
-
-    public void returnToMenuClicked() {
-        state.getStateController().setState(StateEnum.PauseState);
     }
 
     public void increaseMoney(int amount) {

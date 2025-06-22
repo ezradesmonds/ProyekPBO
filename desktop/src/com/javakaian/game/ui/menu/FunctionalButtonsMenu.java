@@ -25,7 +25,7 @@ public class FunctionalButtonsMenu {
     private OToggleButton btnDoubleSpeed;
 
     private OButton btnRestart;
-    private OButton btnExit;
+    private OButton btnSell;
     private final List<Pressable> menuButtons;
     private final SimpleLayout layoutFunctionalButtons;
     private final Level level;
@@ -43,15 +43,17 @@ public class FunctionalButtonsMenu {
         final ButtonFactory bf = new ButtonFactory(FUNC_BUTTON_WH, FUNC_BUTTON_WH);
         btnPauseResume = bf.createToggleButton(MyAtlas.WAVE_PAUSE, MyAtlas.WAVE_RESUME);
         btnDoubleSpeed = bf.createToggleButton(MyAtlas.WAVE_SLOW, MyAtlas.WAVE_FAST);
-        btnExit = bf.createOButton(MyAtlas.QUIT_X);
+        btnSell = bf.createOButton(MyAtlas.QUIT_X);
         btnRestart = bf.createOButton(MyAtlas.CHANGE_MAP);
+
+        btnSell.setEnable(false);
 
         menuButtons.add(btnPauseResume);
         menuButtons.add(btnDoubleSpeed);
         menuButtons.add(btnRestart);
-        menuButtons.add(btnExit);
+        menuButtons.add(btnSell);
 
-        layoutFunctionalButtons.addComponents(btnPauseResume,btnDoubleSpeed,btnRestart,btnExit);
+        layoutFunctionalButtons.addComponents(btnPauseResume,btnDoubleSpeed,btnRestart,btnSell);
         layoutFunctionalButtons.pack();
 
         initButtonListener();
@@ -81,11 +83,17 @@ public class FunctionalButtonsMenu {
                 level.restart();
         });
 
-        btnExit.setButtonListener((event, x, y) -> {
+        btnSell.setButtonListener((event, x, y) -> {
             if (event == OButtonListener.TouchEvent.RELEASE)
-                level.returnToMenuClicked();
+                level.sellSelectedTower();
         });
 
+    }
+
+    public void onTowerSelectionChanged(boolean isTowerSelected) {
+        if (btnSell != null) {
+            btnSell.setEnable(isTowerSelected);
+        }
     }
 
     public void render(ShapeRenderer sr) {

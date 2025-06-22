@@ -26,9 +26,10 @@ public abstract class BaseTower extends GameObject {
     protected float rotation = 0;
     protected float damage;
 
-    protected float speed = 2f; // times per second.
+    protected float speed = 2f;
     protected float speedCounter = 0;
 
+    protected int totalCost;
     protected int rangePrice;
     protected int attackPrice;
     protected int speedPrice;
@@ -99,27 +100,16 @@ public abstract class BaseTower extends GameObject {
 
     }
 
-    /**
-     * Calculates the rotation of the tower according to the target .
-     */
     private void calculateRotation() {
 
         Vector2 temp = new Vector2(target.center).sub(center);
         rotation = temp.angle() + 90f;
     }
 
-    /**
-     * Override this method if your tower shoots periodically. This method will be
-     * called according to attack speed of a tower.
-     */
     public void projectileShoot() {
 
     }
 
-    /**
-     * Override this method if your tower is going to shoot continuously. This
-     * method will be called per update.
-     */
     public void continuousShoot() {
 
     }
@@ -134,10 +124,6 @@ public abstract class BaseTower extends GameObject {
         }
     }
 
-    /**
-     * Bullets gets invisible after they hit their target.This functions iterates
-     * through the bullet lists and removes the invisible ones.
-     */
     private void removeBullets() {
         List<Bullet> tempList = new ArrayList<>();
         for (int i = 0; i < bulletList.size(); i++) {
@@ -150,10 +136,6 @@ public abstract class BaseTower extends GameObject {
 
     }
 
-    /**
-     * Finds all the enemies within the tower range and puts them in hashmap called
-     * enemyMap. If the enemy is out of the range, removes it from the hashmap..
-     */
     private void updateTargetMap() {
         enemyMap = new HashMap<>();
         for (Enemy enemy : enemyList) {
@@ -164,13 +146,8 @@ public abstract class BaseTower extends GameObject {
                 enemyMap.remove(enemy);
             }
         }
-
     }
 
-    /**
-     * Iterates though enemies within the range and sets the closest one as a
-     * target.
-     */
     private void findTarget() {
 
         Collection<Float> values = enemyMap.values();
@@ -224,6 +201,10 @@ public abstract class BaseTower extends GameObject {
     public void increaseSpeed() {
         this.speed *= 1.1;
         this.speedPrice *= 2;
+    }
+
+    public int getTotalCost() {
+        return totalCost;
     }
 
     public int getRangePrice() {

@@ -16,7 +16,7 @@ public class FireTower extends BaseTower {
         damage = GameConstants.TOWER_DAMAGE_FIRE;
         sprite = MyAtlas.FIRE_TOWER;
         spriteSelected = MyAtlas.FIRE_TOWER;
-
+        this.totalCost = GameConstants.TOWER_PRICE;
     }
 
     @Override

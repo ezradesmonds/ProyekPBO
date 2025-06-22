@@ -37,6 +37,10 @@ public class MainControlMenu {
         layoutContainer.pack();
     }
 
+    public void onTowerSelectionChanged(boolean isTowerSelected) {
+        functionalButtonsMenu.onTowerSelectionChanged(isTowerSelected);
+    }
+
     public void render(ShapeRenderer sr) {
         layoutContainer.render(sr);
     }

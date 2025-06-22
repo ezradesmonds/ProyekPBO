@@ -17,6 +17,7 @@ public class IceTower extends BaseTower {
         damage = GameConstants.TOWER_DAMAGE_ICE;
         sprite = MyAtlas.ICE_TOWER;
         spriteSelected = MyAtlas.ICE_TOWER;
+        this.totalCost = GameConstants.TOWER_PRICE;
     }
 
     @Override

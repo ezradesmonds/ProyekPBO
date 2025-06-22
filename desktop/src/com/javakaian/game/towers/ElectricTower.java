@@ -17,7 +17,7 @@ public class ElectricTower extends BaseTower {
         spriteSelected = MyAtlas.ELECTRIC_TOWER;
         damage = GameConstants.TOWER_DAMAGE_ELECTRIC;
         range = GameConstants.GRID_WIDTH * 3;
-
+        this.totalCost = GameConstants.ELECTRIC_TOWER_PRICE;
     }
 
     @Override

@@ -104,8 +104,6 @@ public class EnemyController {
 
     private void isWaveCompleted() {
         if (enemyList.isEmpty()) {
-            // it means wave has been cleared or enemies passed the path.
-            // next wave can be spawned.
             nextWaveTimer++;
             if (nextWaveTimer % 2 == 0)
                 level.nextWaveCountDown((GameConstants.NEXT_WAVE_SPAWN_TIME / 2 - nextWaveTimer / 2));

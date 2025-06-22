@@ -17,5 +17,4 @@ public class TowerDefenseMain {
         config.resizable = false;
         new LwjglApplication(game, config);
     }
-
 }
