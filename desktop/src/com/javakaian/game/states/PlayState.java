@@ -72,11 +72,11 @@ public class PlayState extends State {
 
     @Override
     public void scrolled(int amount) {
-        if (amount > 0) {
-            camera.zoom += 0.5;
-        } else {
-            camera.zoom -= 0.5;
-        }
+//        if (amount > 0) {
+//            camera.zoom += 0.5;
+//        } else {
+//            camera.zoom -= 0.5;
+//        }
     }
 
 }
