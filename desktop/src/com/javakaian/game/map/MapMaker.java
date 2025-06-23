@@ -10,34 +10,34 @@ import java.util.Set;
 
 public class MapMaker {
 
-    //merancang random denah jalur
-
+    // Bertugas merancang denah jalur secara acak.
     private int rowSize;
     private int columnSize;
-    private int[][] matrix;
-    private final Set<Vector2> pathPoints;
-    private final LinkedList<Direction> directionList;
+    private int[][] matrix; // Representasi peta dalam bentuk angka.
+    private final Set<Vector2> pathPoints; // Kumpulan koordinat semua titik jalur.
+    private final LinkedList<Direction> directionList; // Daftar perintah arah untuk musuh (GPS).
 
+    // Constructor.
     public MapMaker() {
-
         directionList = new LinkedList<>();
         pathPoints = new HashSet<>();
         initialize();
     }
 
+    // Menjalankan semua proses pembuatan peta.
     public void initialize() {
-
         columnSize = GameConstants.COLUMN_SIZE;
         rowSize = GameConstants.MAP_ROW_SIZE;
-        matrix = generateMap(rowSize, columnSize);
-        loadPathPoints();
-        loadDirectionList(0, 0);
+        matrix = generateMap(rowSize, columnSize); // Buat denah dasar.
+        loadPathPoints(); // Kumpulkan titik jalur.
+        loadDirectionList(0, 0); // Buat daftar arah.
+
+        // Menambahkan arah awal dan akhir untuk musuh.
         directionList.add(0, Direction.RIGHT);
         directionList.add(directionList.get(directionList.size() - 1));
     }
 
-    //bikin matriks 2D dan ngisi jalur dgn 1
-
+    // Menelusuri jalur di matriks dan mengubahnya menjadi daftar arah (UP, DOWN, etc).
     public void loadDirectionList(int x, int y) {
         matrix[x][y] = 0;
         if (!(x + 1 >= rowSize) && matrix[x + 1][y] == 1) {
@@ -53,11 +53,10 @@ public class MapMaker {
             directionList.add(Direction.RIGHT);
             loadDirectionList(x, y + 1);
         }
-        //menelusuri jalur dan ngubah jadi RIGHT UP dll
     }
 
+    // Mengisi bagian dari matriks dengan angka 1 untuk membuat jalur.
     public void fillMap(int col, int start, int finish) {
-
         if (start > finish) {
             int temp = finish;
             finish = start;
@@ -68,8 +67,8 @@ public class MapMaker {
         }
     }
 
+    // Membuat matriks 2D dan mengisi jalur dengan angka 1 secara acak.
     public int[][] generateMap(int row, int col) {
-
         matrix = new int[row][col];
         int start = 0;
         int finish = 0;
@@ -87,8 +86,8 @@ public class MapMaker {
         return matrix;
     }
 
+    // Mengumpulkan semua titik jalur dari matriks ke dalam Set.
     public void loadPathPoints() {
-
         for (int i = 0; i < rowSize; i++) {
             for (int j = 0; j < columnSize; j++) {
                 if (matrix[i][j] == 1) {
@@ -98,14 +97,17 @@ public class MapMaker {
         }
     }
 
+    // Getter untuk mengambil blueprint jalur.
     public Set<Vector2> getPathPoints() {
         return pathPoints;
     }
 
+    // Getter untuk mengambil "GPS" musuh.
     public LinkedList<Direction> getDirectionList() {
         return directionList;
     }
 
+    // Enum untuk merepresentasikan empat arah mata angin.
     public enum Direction {
         LEFT, RIGHT, UP, DOWN
     }
