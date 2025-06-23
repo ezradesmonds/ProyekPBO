@@ -13,6 +13,7 @@ public class Map {
 
     private final LinkedList<Direction> directionList;
     private final Board board;
+    //asosiasi dengan MAPMAKER utk generate MAP trs membangun BOARD dari komposisi GRID
 
     public Map() {
 

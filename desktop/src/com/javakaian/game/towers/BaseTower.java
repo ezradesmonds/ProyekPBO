@@ -18,7 +18,10 @@ import java.util.Map.Entry;
 
 public abstract class BaseTower extends GameObject {
 
+    //base tower akan jadi parent utk tower2
+
     protected List<Enemy> enemyList;
+    //agregasi dgn enemy
     protected List<Bullet> bulletList;
 
     protected Enemy target;

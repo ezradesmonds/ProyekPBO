@@ -19,9 +19,10 @@ public class OTDGame extends ApplicationAdapter {
     private ShapeRenderer sr;
     private SpriteBatch sb;
     private boolean isFullscreen = false;
+    // mengelola siklus hidup aplikasi
 
     @Override
-    public void create() {
+    public void create() { //inisialisasi file utama
         MusicHandler.init();
         MyAtlas.init();
         stateController = new StateController();
@@ -35,7 +36,7 @@ public class OTDGame extends ApplicationAdapter {
         stateController.resize(width, height);
     }
 
-    @Override
+    @Override //delegasi ke StateController supaya bersih
     public void render() {
         handleFullscreenToggle(); // Togle tombol F11 buat fullsreen
         Gdx.gl.glClearColor(0, 0, 0, 1);
