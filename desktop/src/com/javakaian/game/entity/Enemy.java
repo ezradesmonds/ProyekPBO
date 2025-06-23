@@ -25,6 +25,8 @@ public class Enemy extends GameObject {
 
     private final HealthBar healthBar;
 
+    //komposisi dengan healthbar
+
     public Enemy(float x, float y, float width, float height, float health, LinkedList<Direction> directionList,
                  int bounty, int speed) {
         super(x, y, width, height);

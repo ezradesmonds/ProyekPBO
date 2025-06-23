@@ -6,7 +6,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.javakaian.game.entity.GameObject;
 import com.javakaian.game.resources.MyAtlas;
 
+
+//grid punya posisi dan ukuran karena inheritance
 public class Grid extends GameObject {
+
+    //representasi dari 1 kotak di map
 
     private EnumGridType type;
 
@@ -21,6 +25,8 @@ public class Grid extends GameObject {
         super.render(sr);
 
     }
+
+    //ada 2 tipe yaitu land atau path
 
     public void render(SpriteBatch sb) {
 

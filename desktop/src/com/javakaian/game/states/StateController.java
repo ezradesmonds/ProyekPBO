@@ -15,6 +15,8 @@ import java.util.Stack;
 
 public class StateController extends InputAdapter {
 
+    //otak navigasi game
+
     private final Map<StateEnum, State> stateMap;
     private State currentState;
     private State previousState;
@@ -23,7 +25,7 @@ public class StateController extends InputAdapter {
         stateMap = new HashMap<>();
         Gdx.input.setInputProcessor(this);
     }
-
+    //ngontrol layar/state yang aktif
     public void setState(StateEnum stateEnum) {
         previousState = currentState;
         currentState = getState(stateEnum);
@@ -31,6 +33,7 @@ public class StateController extends InputAdapter {
             currentState.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         }
     }
+    //nerima input user
 
     public void goBack() {
         State tmp = previousState;
@@ -44,6 +47,8 @@ public class StateController extends InputAdapter {
     public State getState(StateEnum stateEnum){
         return stateMap.computeIfAbsent(stateEnum, this::createState);
     }
+
+    //perintah utk render dan update layar aktif
 
     public void render(SpriteBatch sb, ShapeRenderer sr) {
         currentState.render(sb,sr);

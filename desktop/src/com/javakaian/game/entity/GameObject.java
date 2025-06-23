@@ -11,6 +11,8 @@ import com.badlogic.gdx.math.Vector2;
  */
 public abstract class GameObject {
 
+    // nanti bakal jadi parent dari BASETOWER & ENEMY dll
+
     public Vector2 position;
 
     public Vector2 size;

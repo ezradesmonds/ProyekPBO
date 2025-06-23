@@ -23,6 +23,7 @@ public class Level {
 
     private EnemyController enemyController;
     private TowerController towerController;
+    //asosiasi delegasi tugas
 
     private Map map;
     private MainControlMenu towerSelectionMenu;

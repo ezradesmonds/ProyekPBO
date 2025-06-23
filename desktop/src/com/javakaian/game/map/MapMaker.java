@@ -10,6 +10,8 @@ import java.util.Set;
 
 public class MapMaker {
 
+    //merancang random denah jalur
+
     private int rowSize;
     private int columnSize;
     private int[][] matrix;
@@ -30,12 +32,11 @@ public class MapMaker {
         matrix = generateMap(rowSize, columnSize);
         loadPathPoints();
         loadDirectionList(0, 0);
-
-        // add last direction to the list one more time
-        // so enemy can go outside of screen
         directionList.add(0, Direction.RIGHT);
         directionList.add(directionList.get(directionList.size() - 1));
     }
+
+    //bikin matriks 2D dan ngisi jalur dgn 1
 
     public void loadDirectionList(int x, int y) {
         matrix[x][y] = 0;
@@ -52,7 +53,7 @@ public class MapMaker {
             directionList.add(Direction.RIGHT);
             loadDirectionList(x, y + 1);
         }
-
+        //menelusuri jalur dan ngubah jadi RIGHT UP dll
     }
 
     public void fillMap(int col, int start, int finish) {
