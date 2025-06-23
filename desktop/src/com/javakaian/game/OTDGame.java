@@ -37,11 +37,11 @@ public class OTDGame extends ApplicationAdapter {
 
     @Override
     public void render() {
-        handleFullscreenToggle();
+        handleFullscreenToggle(); // Togle tombol F11 buat fullsreen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        stateController.render(sb,sr);
-        stateController.update(Gdx.graphics.getDeltaTime());
+        stateController.render(sb,sr); //Kasih tau StateController untuk render semua state yang aktif
+        stateController.update(Gdx.graphics.getDeltaTime()); //Update logika pergerakan karakter, perhitungan waktu, dll
     }
     private void handleFullscreenToggle() {
         if (Gdx.input.isKeyJustPressed(Input.Keys.F11)) {

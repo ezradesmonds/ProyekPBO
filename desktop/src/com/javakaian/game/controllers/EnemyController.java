@@ -95,11 +95,9 @@ public class EnemyController {
                         enemySpeed));
                 count++;
             } else {
-
                 isWaveCompleted();
             }
         }
-
     }
 
     private void isWaveCompleted() {
@@ -117,7 +115,6 @@ public class EnemyController {
                 level.newWaveCreated(this.enemyNumberLimit);
             }
         }
-
     }
 
     private void checkIfEnemyOfScreen() {
@@ -143,7 +140,6 @@ public class EnemyController {
     }
 
     public void removeDeadEnemies() {
-
         for (int i = 0; i < enemyList.size(); i++) {
             Enemy e = enemyList.get(i);
             if (!e.isAlive()) {

@@ -21,8 +21,6 @@ public class FireTower extends BaseTower {
 
     @Override
     public void projectileShoot() {
-
         bulletList.add(new Bullet(center.x, center.y, target, damage, EnumBulletType.FIRE_BULLET));
     }
-
 }

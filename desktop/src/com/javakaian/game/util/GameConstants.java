@@ -12,7 +12,7 @@ public class GameConstants {
     public static int MAP_ROW_SIZE = 6;
     public static int COLUMN_SIZE = 16;
 	public static final float VIRTUAL_HEIGHT = 720;
-	public static final float VIRTUAL_WIDTH = (16 * VIRTUAL_HEIGHT) / 9; // Hasilnya 1280
+	public static final float VIRTUAL_WIDTH = (16 * VIRTUAL_HEIGHT) / 9;
 
 	public static float GRID_WIDTH = VIRTUAL_WIDTH / COLUMN_SIZE;
 	public static float GRID_HEIGHT = VIRTUAL_HEIGHT / ROW_SIZE;
@@ -35,7 +35,6 @@ public class GameConstants {
 	public static float MENU_ITEM_HEIGHT = GRID_HEIGHT * (1.5f);
 
 	public static float FUNC_BUTTON_WH = GRID_WIDTH * (0.8f);
-
 
 	public static float BULLET_WIDTH = GRID_WIDTH / 2;
 	public static float BULLET_HEIGHT = GRID_HEIGHT / 2;

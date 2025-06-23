@@ -19,7 +19,6 @@ public class Bullet extends GameObject {
         this.bulletType = bulletType;
         this.target = target;
         this.damage = damage;
-        // ?????????? fix this..
         if (bulletType == EnumBulletType.ICE_BULLET) {
             sprite = MyAtlas.ICE_BULLET;
         } else if (bulletType == EnumBulletType.FIRE_BULLET) {
@@ -30,7 +29,6 @@ public class Bullet extends GameObject {
 
     @Override
     public void render(ShapeRenderer sr) {
-        // super.render(sr);
     }
 
     @Override

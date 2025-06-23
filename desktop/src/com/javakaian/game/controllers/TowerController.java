@@ -32,7 +32,6 @@ public class TowerController {
     }
 
     public TowerController() {
-
         towerList = new ArrayList<>();
     }
 
@@ -78,7 +77,6 @@ public class TowerController {
                 break;
         }
         return 0;
-
     }
 
     private int buildFireTower(float x, float y, List<Enemy> enemyList) {

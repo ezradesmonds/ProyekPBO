@@ -32,9 +32,6 @@ public class StateController extends InputAdapter {
         }
     }
 
-    /**
-     * Goes back to previous state, which means we have to swap current and previous state.
-     * */
     public void goBack() {
         State tmp = previousState;
         previousState = currentState;
@@ -44,9 +41,6 @@ public class StateController extends InputAdapter {
         }
     }
 
-    /**
-     * Return the state, if it already exist or make a new one.
-     * */
     public State getState(StateEnum stateEnum){
         return stateMap.computeIfAbsent(stateEnum, this::createState);
     }
@@ -103,8 +97,6 @@ public class StateController extends InputAdapter {
                 return new MenuState(this);
             case OptionState:
                 return new OptionsState(this);
-//            case CreditsState:
-//                return new CreditState(this);
             case PauseState:
                 return new PauseState(this);
             case MapSelectState:

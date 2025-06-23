@@ -22,7 +22,6 @@ public class IceTower extends BaseTower {
 
     @Override
     public void projectileShoot() {
-
         for (Entry<Enemy, Float> entry : enemyMap.entrySet()) {
             bulletList.add(new Bullet(center.x, center.y, entry.getKey(), damage, EnumBulletType.ICE_BULLET));
         }

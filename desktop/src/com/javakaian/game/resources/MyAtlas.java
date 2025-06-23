@@ -76,8 +76,6 @@ public class MyAtlas {
         coinRegions = atlas.findRegions("coin");
 
         MENU_TILE = createSprite(atlas.findRegion("menu"));
-//        LAND_TILE = new TextureRegion(new Texture(Gdx.files.internal("FieldsTile_Brown.png")));
-//        PATH_TILE = new TextureRegion(new Texture(Gdx.files.internal("tileField.png")));
         ENEMY = createSprite(atlas.findRegion("enemy"));
         ENEMY_SLOWED = createSprite(atlas.findRegion("enemy_slowed"));
         FIRE_TOWER = new Sprite(new Texture(Gdx.files.internal("fireTower.png")));

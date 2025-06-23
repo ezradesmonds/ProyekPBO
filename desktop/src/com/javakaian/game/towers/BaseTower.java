@@ -70,6 +70,9 @@ public abstract class BaseTower extends GameObject {
         for (Bullet bullet : bulletList) {
             bullet.update(deltaTime);
         }
+        if (target != null && (!target.isAlive() || !enemyMap.containsKey(target))) {
+            target = null;
+        }
         if (target == null) {
             findTarget();
             return;
@@ -81,7 +84,7 @@ public abstract class BaseTower extends GameObject {
         } else {
             target = null;
         }
-
+        removeBullets();
     }
 
     public void render(SpriteBatch sb) {
@@ -97,7 +100,6 @@ public abstract class BaseTower extends GameObject {
         for (Bullet bullet : bulletList) {
             bullet.render(sb);
         }
-
     }
 
     private void calculateRotation() {
@@ -107,15 +109,12 @@ public abstract class BaseTower extends GameObject {
     }
 
     public void projectileShoot() {
-
     }
 
     public void continuousShoot() {
-
     }
 
     private void invokeShootFunctions(float deltaTime) {
-
         continuousShoot();
         speedCounter += deltaTime;
         if (speedCounter >= 1.0f / speed) {
@@ -133,13 +132,12 @@ public abstract class BaseTower extends GameObject {
             }
         }
         bulletList.removeAll(tempList);
-
     }
 
     private void updateTargetMap() {
         enemyMap = new HashMap<>();
         for (Enemy enemy : enemyList) {
-            float distance = center.dst(enemy.position);
+            float distance = center.dst(enemy.center);
             if (distance <= range && enemy.isAlive()) {
                 enemyMap.put(enemy, distance);
             } else {
@@ -152,15 +150,12 @@ public abstract class BaseTower extends GameObject {
 
         Collection<Float> values = enemyMap.values();
         if (!values.isEmpty()) {
-
             float lowest = Collections.min(values);
-
             for (Entry<Enemy, Float> entry : enemyMap.entrySet()) {
                 if (entry.getValue().equals(lowest)) {
                     this.target = entry.getKey();
                 }
             }
-
         }
     }
 
@@ -189,7 +184,7 @@ public abstract class BaseTower extends GameObject {
     }
 
     public void increaseDamage() {
-        this.damage *= 2;
+        this.damage *= 3;
         this.attackPrice *= 2;
     }
 
@@ -224,7 +219,6 @@ public abstract class BaseTower extends GameObject {
     }
 
     public enum TowerType {
-
         ELECTRIC, FIRE, ICE
     }
 }
