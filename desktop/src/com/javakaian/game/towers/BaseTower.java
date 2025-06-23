@@ -52,7 +52,6 @@ public abstract class BaseTower extends GameObject {
 
     @Override
     public void render(ShapeRenderer sr) {
-
         sr.setColor(Color.CYAN);
         if (isSelected) {
             sr.circle(center.x, center.y, range);
@@ -90,10 +89,8 @@ public abstract class BaseTower extends GameObject {
     public void render(SpriteBatch sb) {
 
         if (isSelected) {
-
             sb.draw(spriteSelected, position.x, position.y, size.x / 2, size.y / 2, size.x, size.y, 1, 1, rotation);
         } else {
-
             sb.draw(sprite, position.x, position.y, size.x / 2, size.y / 2, size.x, size.y, 1, 1, rotation);
         }
 
@@ -103,7 +100,6 @@ public abstract class BaseTower extends GameObject {
     }
 
     private void calculateRotation() {
-
         Vector2 temp = new Vector2(target.center).sub(center);
         rotation = temp.angle() + 90f;
     }

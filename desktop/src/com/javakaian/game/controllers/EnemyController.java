@@ -15,44 +15,55 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+//Spawn Musuh, Ngatur Musuh, Nambah Wave, Nambah Bounty, Nambah Health, Nambah Enemy Limit
 public class EnemyController {
 
+    //Musuh yang ada di layar
     private final List<Enemy> enemyList;
+    //Waktu untuk spawn musuh
     private float spawnTime = 0;
+    //Periode spawn musuh
     private float spawnPeriod;
+//Jumlah musuh yang sudah di spawn
     private int count;
 
+    //Health musuh
     private float health;
+    //Batas jumlah musuh yang bisa ada di layar
     private int enemyNumberLimit;
+    //Bounty yang didapatkan ketika musuh mati
     private int bounty;
+    //Daftar arah yang bisa diambil musuh
     private final LinkedList<Direction> directionList;
 
     private int nextWaveTimer = 0;
 
+    //Reff ke object level kalo musuh lolos atau mati
     private final Level level;
 
     private int enemySpeed = GameConstants.ENEMY_SPEED;
 
+    //Animasi Bounty
     private final List<Bounty> bountyList;
 
     public EnemyController(Level level) {
 
         this.level = level;
-        Map map = level.getMap();
-        this.directionList = map.getDirectionList();
-        this.health = level.getEnemyHealth();
-        this.enemyNumberLimit = level.getEnemyNumber();
+        Map map = level.getMap(); //ambil map dari level
+        this.directionList = map.getDirectionList(); //jalur
+        this.health = level.getEnemyHealth(); //health musuh
+        this.enemyNumberLimit = level.getEnemyNumber(); //batas jumlah musuh yang bisa ada di layar
 
         count = level.getEnemyNumber();
-        enemyList = new ArrayList<>();
-        bountyList = new ArrayList<>();
+        enemyList = new ArrayList<>(); //tampung musuh
+        bountyList = new ArrayList<>(); //nampung bounty
 
         this.bounty = GameConstants.ENEMY_BOUNTY;
         this.spawnPeriod = GameConstants.ENEMY_SPAWN_PERIOD;
     }
 
+    //render musuh dan bounty
     public void render(SpriteBatch sb) {
-
         for (Enemy enemy : enemyList) {
             enemy.render(sb);
         }
@@ -61,6 +72,7 @@ public class EnemyController {
         }
     }
 
+    //render health bar musuh
     public void render(ShapeRenderer sr) {
         for (Enemy enemy : enemyList) {
             enemy.render(sr);
@@ -68,9 +80,11 @@ public class EnemyController {
     }
 
     public void update(float deltaTime) {
+        //update gerak, status, animasi bounty
         for (Enemy enemy : enemyList) {
             enemy.update(deltaTime);
         }
+        //update gerak, status, animasi bounty
         for (Bounty bounty : bountyList) {
             bounty.update(deltaTime);
         }
@@ -81,12 +95,11 @@ public class EnemyController {
     }
 
     public void createEnemy() {
-
         spawnTime += Gdx.graphics.getDeltaTime();
         if (spawnTime >= spawnPeriod) {
             spawnTime = 0;
             if (count < enemyNumberLimit) {
-                Vector2 p = new Vector2(0, 0);
+                Vector2 p = new Vector2(0, 0); //spawn diluar layar kiri
                 enemyList.add(new Enemy(
                         p.x - GameConstants.GRID_WIDTH + (GameConstants.GRID_WIDTH / 2 - GameConstants.ENEMY_WIDTH / 2),
                         p.y + GameConstants.GRID_HEIGHT
@@ -106,6 +119,7 @@ public class EnemyController {
             if (nextWaveTimer % 2 == 0)
                 level.nextWaveCountDown((GameConstants.NEXT_WAVE_SPAWN_TIME / 2 - nextWaveTimer / 2));
 
+            //Round wave selesai
             if (nextWaveTimer == GameConstants.NEXT_WAVE_SPAWN_TIME) {
                 count = 0;
                 nextWaveTimer = 0;

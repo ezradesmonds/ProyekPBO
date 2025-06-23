@@ -35,7 +35,6 @@ public class Bounty extends GameObject {
         super.update(deltaTime);
         stateTime += deltaTime;
         animTime += deltaTime;
-        // 2 second
         float duration = 1.0f;
         if (animTime >= duration) {
             disposable = true;

@@ -128,11 +128,8 @@ public class Enemy extends GameObject {
             alive = false;
             visible = false;
         } else {
-
             healthBar.setRemaniningHealth(remainingHealth);
-
         }
-
     }
 
     private void clearSlowEffects(float deltaTime) {
